@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct Piper: View {
+    
+    @State private var selection = "Planned Feeding"
+    
     var body: some View {
         NavigationStack {
-            VStack(alignment: .center) {
-                
+            VStack {
+                Picker("Current Selection", selection: $selection){
+                    Text("Meals").tag("Meals")
+                    Text("Planned Feeding").tag("Planned Feeding")
+                    Text("History").tag("History")
+                }
+                .pickerStyle(.segmented)
+                Spacer()
             }
+            
             .padding()
             .navigationTitle("Piper")
             .toolbar {
